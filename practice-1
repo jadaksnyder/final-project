@@ -1,0 +1,58 @@
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    string questions[10] = {"In computing, keyboards are used as input devices.",
+                            "Operating systems are software systems that help make it more convenient to use computers and to manage the transitions between multiple jobs.",
+                            "C++ is a superset of C; it \"spruces up\" the C language and provides capabilities for object oriented programming.",
+                            "A computer is a device capable of performing computations and making logical decisions.",
+                            "Most programs in C++ input data from stdin and output data from stdout.",
+                            "The language understood by the microprocessor is called assembly language.",
+                            "A machine cycle is the time it take the microprocessor to fetch and execute a complete instruction.",
+                            "C, C++, and java are among the most powerful and most widely used assembly languages",
+                            "Machine language is the \"natural language\" of a particular computer.",
+                            "C++ has become widely used for writing software for computer networking and for distribution client/server applications."};
+
+    string answers[10] = { "TRUE",
+                           "TRUE",
+                           "TRUE",
+                           "TRUE",
+                           "FALSE",
+                           "FALSE",
+                           "FALSE",
+                           "FALSE",
+                           "TRUE",
+                           "FALSE",
+    };
+
+    int size = sizeof(questions) / sizeof(questions[0]);
+
+    srand(time(0));
+
+    int asked[size] = {0};
+    for (int i = 1; i < size;)
+    {
+        int index = rand() % size;
+        if (asked[index] == 0)
+        {
+            cout << "Question " << i + 1 << ": " << questions[index] << endl;
+            string answer;
+            getline(cin, answer);
+            if (answer == answers[index])
+            {
+                cout << "Correct!" << endl;
+            }
+            else
+            {
+                cout << "Incorrect. The answer is: " << answers[index] << endl;
+            }
+            asked[index] = 1;
+            i++;
+        }
+    }
+    return 0;
+}
